@@ -17,7 +17,7 @@ public class AlarmPopUp extends Activity {
 	private static final int DIALOG_ALARM = 0;
 
 	// The alarm ID
-	private int m_alarmId;
+	private String m_alarmId;
 	private String mess = "";
 
 	@Override
@@ -29,7 +29,7 @@ public class AlarmPopUp extends Activity {
 		Bundle extras = intent.getExtras();
 
 		if (extras != null) {
-			m_alarmId = extras.getInt("AlarmID", -1);
+			m_alarmId = extras.getString("AlarmID");
 			mess = extras.getString("AlarmMessage");
 		} else {
 			m_alarmId = -1;
