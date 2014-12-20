@@ -8,6 +8,26 @@ How to use
 
      $ cordova prepare
      
+     then
+     
+     navigator.plugins.alarm.set(alarmDate,alarmid,message, 
+          function(){
+            // SUCCESS
+          }, 
+          function(){
+            // ERROR
+          })
+     
+     
+      navigator.plugins.alarm.stop(alarmid, 
+          function(){
+            // SUCCESS
+          }, 
+          function(){
+            // ERROR
+          })
+          
+     
 How to remove
 ---------------
 
