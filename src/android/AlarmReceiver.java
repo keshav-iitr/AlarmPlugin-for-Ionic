@@ -38,7 +38,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 //			Uri alert = fromFile(File file);
 			
 			// Pass on the alarm ID as extra data
-			alarmIntent.putExtra("AlarmID", intent.getIntExtra("AlarmID", -1));
+			alarmIntent.putExtra("AlarmID", intent.getStringExtra("AlarmID"));
 			alarmIntent.putExtra("AlarmMessage",
 					intent.getStringExtra("AlarmMessage"));
 
