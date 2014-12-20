@@ -56,8 +56,8 @@ public class AlarmPlugin extends CordovaPlugin {
 					return true;
 				}
 
-                               var alarmid = sdf.parse(args.getString(1));
-				var message = sdf.parse(args.getString(2));
+                               var alarmid = args.getString(1);
+				var message = args.getString(2);
 				
 				System.out.println("alarmid == = " +alarmid);
 		                System.out.println("message == = " +message);
@@ -83,7 +83,7 @@ public class AlarmPlugin extends CordovaPlugin {
 			}
 			
 			if ("stopAlarm".equals(action)) {
-				var alarmid = sdf.parse(args.getString(0));
+				var alarmid = args.getString(0);
 		        	System.out.println("alarmid == = " +alarmid);
 				AlarmManager alarmMgr = (AlarmManager)(this.cordova.getActivity().getSystemService(Context.ALARM_SERVICE));
 				PendingIntent alarmIntent;     
