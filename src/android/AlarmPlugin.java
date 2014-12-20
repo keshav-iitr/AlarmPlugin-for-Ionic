@@ -56,6 +56,11 @@ public class AlarmPlugin extends CordovaPlugin {
 					return true;
 				}
 
+                               var alarmid = sdf.parse(args.getString(1));
+				var message = sdf.parse(args.getString(2));
+				
+				System.out.println("alarmid == = " +alarmid);
+		                System.out.println("message == = " +message);
 				SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(this.cordova.getActivity());
 				SharedPreferences.Editor editor = settings.edit();
 	            editor.putLong("AlarmPlugin.AlarmDate", aDate.getTime()); //$NON-NLS-1$
@@ -66,14 +71,29 @@ public class AlarmPlugin extends CordovaPlugin {
 				PendingIntent alarmIntent;     
 				Intent intent = new Intent(this.cordova.getActivity(), AlarmReceiver.class);
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				alarmIntent = PendingIntent.getBroadcast(this.cordova.getActivity(), 0, intent, 0);
+				alarmIntent = PendingIntent.getBroadcast(this.cordova.getActivity(), alarmid, intent, 0);
 				
 				alarmMgr.cancel(alarmIntent);
 				alarmMgr.set(AlarmManager.RTC_WAKEUP,  aDate.getTime(), alarmIntent);
 				
-				callbackContext.success("Alarm set at: " +sdf.format(aDate));
+				callbackContext.success("Alarm set at: " +sdf.format(aDate)+" with Id: "+alarmid);
 			    return true; 		
 			}
+			
+			if ("stopAlarm".equals(action)) {
+				var alarmid = sdf.parse(args.getString(0));
+		        	System.out.println("alarmid == = " +alarmid);
+				AlarmManager alarmMgr = (AlarmManager)(this.cordova.getActivity().getSystemService(Context.ALARM_SERVICE));
+				PendingIntent alarmIntent;     
+				Intent intent = new Intent(this.cordova.getActivity(), AlarmReceiver.class);
+				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				alarmIntent = PendingIntent.getBroadcast(this.cordova.getActivity(), alarmid, intent, 0);
+				alarmMgr.cancel(alarmIntent);
+				callbackContext.success("Alarm stopped of id: "+alarmid);
+				
+			    return true; 		
+			}
+			
 			return false;		
 		} catch(Exception e) {
 		    System.err.println("Exception: " + e.getMessage());
