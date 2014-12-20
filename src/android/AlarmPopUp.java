@@ -32,7 +32,7 @@ public class AlarmPopUp extends Activity {
 			m_alarmId = extras.getString("AlarmID");
 			mess = extras.getString("AlarmMessage");
 		} else {
-			m_alarmId = -1;
+			m_alarmId = "-1";
 		}
 
 		// Show the popup dialog
