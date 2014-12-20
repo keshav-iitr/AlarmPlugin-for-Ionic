@@ -39,8 +39,8 @@ public class AlarmReceiver extends BroadcastReceiver {
 			
 			// Pass on the alarm ID as extra data
 			alarmIntent.putExtra("AlarmID", intent.getIntExtra("AlarmID", -1));
-			alarmIntent.putExtra("AlarmTime",
-					intent.getStringExtra("AlarmTime"));
+			alarmIntent.putExtra("AlarmMessage",
+					intent.getStringExtra("AlarmMessage"));
 
 			// Start the popup activity
 			context.startActivity(alarmIntent);
