@@ -1,4 +1,4 @@
-package com.uniclau.alarmplugin;
+package com.kk.alarmplugin;
 
 import android.app.KeyguardManager;
 import android.app.KeyguardManager.KeyguardLock;
@@ -29,11 +29,28 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Vibrator v = (Vibrator) context.getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(2000);
-   
+		Intent alarmIntent = new Intent("android.intent.action.MAIN");
+
+			alarmIntent.setClass(context, AlarmPopUp.class);
+			alarmIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			
+			 
+//			Uri alert = fromFile(File file);
+			
+			// Pass on the alarm ID as extra data
+			alarmIntent.putExtra("AlarmID", intent.getIntExtra("AlarmID", -1));
+			alarmIntent.putExtra("AlarmTime",
+					intent.getStringExtra("AlarmTime"));
+
+			// Start the popup activity
+			context.startActivity(alarmIntent);
+   /*
         intent = new Intent();
         intent.setAction("com.uniclau.alarmplugin.ALARM");
+
         intent.setPackage(context.getPackageName());
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         context.startActivity(intent);
+		*/
     }
 }

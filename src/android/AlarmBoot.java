@@ -1,4 +1,4 @@
-package com.uniclau.alarmplugin;
+package com.kk.alarmplugin;
 
 import java.util.Date;
 
