@@ -18,7 +18,7 @@ public class AlarmPopUp extends Activity {
 
 	// The alarm ID
 	private int m_alarmId;
-	private String time = "";
+	private String mess = "";
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -30,7 +30,7 @@ public class AlarmPopUp extends Activity {
 
 		if (extras != null) {
 			m_alarmId = extras.getInt("AlarmID", -1);
-			time = extras.getString("AlarmTime");
+			mess = extras.getString("AlarmMessage");
 		} else {
 			m_alarmId = -1;
 		}
@@ -50,8 +50,8 @@ public class AlarmPopUp extends Activity {
 		// Build the dialog
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
-		alert.setTitle("Alarm Received!!!");
-		alert.setMessage("Its time for the alarm with ID: " + m_alarmId+"\n\n Time :: "+time);
+		alert.setTitle("Alarm !");
+		alert.setMessage("Its time for " +mess);
 		alert.setCancelable(false);
 
 		alert.setPositiveButton("Dismiss",
