@@ -50,8 +50,9 @@ public class AlarmPopUp extends Activity {
 		// Build the dialog
 		AlertDialog.Builder alert = new AlertDialog.Builder(this);
 
+                System.out.println("mess == = "+mess);
 		alert.setTitle("Time to care about your health.!");
-		alert.setMessage("" +mess);
+		alert.setMessage(mess);
 		alert.setCancelable(false);
 
 		alert.setPositiveButton("Dismiss",
