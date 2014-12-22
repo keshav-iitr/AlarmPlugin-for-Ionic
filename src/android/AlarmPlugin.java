@@ -73,7 +73,7 @@ public class AlarmPlugin extends CordovaPlugin {
 				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.putExtra("AlarmID", alarmid);
 				intent.putExtra("AlarmMessage", message);
-				alarmIntent = PendingIntent.getBroadcast(this.cordova.getActivity(), Integer.parseInt(alarmid), intent, 0);
+				alarmIntent = PendingIntent.getBroadcast(this.cordova.getActivity(), Integer.parseInt(alarmid), intent, PendingIntent.FLAG_CANCEL_CURRENT);
 				
 				alarmMgr.cancel(alarmIntent);
 				alarmMgr.set(AlarmManager.RTC_WAKEUP,  aDate.getTime(), alarmIntent);
