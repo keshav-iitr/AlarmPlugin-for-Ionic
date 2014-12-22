@@ -38,9 +38,10 @@ public class AlarmReceiver extends BroadcastReceiver {
 //			Uri alert = fromFile(File file);
 			
 			// Pass on the alarm ID as extra data
+			String message =intent.getStringExtra("AlarmMessage");
+			System.out.println("message == = " +message);
 			alarmIntent.putExtra("AlarmID", intent.getStringExtra("AlarmID"));
-			alarmIntent.putExtra("AlarmMessage",
-					intent.getStringExtra("AlarmMessage"));
+			alarmIntent.putExtra("AlarmMessage",message);
 
 			// Start the popup activity
 			context.startActivity(alarmIntent);
