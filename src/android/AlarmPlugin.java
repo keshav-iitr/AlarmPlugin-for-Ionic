@@ -77,7 +77,7 @@ public class AlarmPlugin extends CordovaPlugin {
 				
 				alarmMgr.cancel(alarmIntent);
 				// alarmMgr.set(AlarmManager.RTC_WAKEUP,  aDate.getTime(), alarmIntent);
-				alarmMgr. void setRepeating (AlarmManager.RTC_WAKEUP,  aDate.getTime(),AlarmManager.INTERVAL_DAY, alarmIntent);
+				alarmMgr.setRepeating (AlarmManager.RTC_WAKEUP,  aDate.getTime(),AlarmManager.INTERVAL_DAY, alarmIntent);
 				callbackContext.success("Alarm set at: " +sdf.format(aDate)+" with Id: "+alarmid);
 			    return true; 		
 			}
